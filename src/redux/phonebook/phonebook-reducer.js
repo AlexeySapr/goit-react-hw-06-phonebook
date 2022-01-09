@@ -11,7 +11,7 @@ const contacts = createReducer([], {
 });
 
 const filter = createReducer('', {
-  [actions.changeFilter]: () => {},
+  [actions.changeFilter]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
