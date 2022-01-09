@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import * as actions from './redux/phonebook/phonebook-actions';
+import React, { useEffect } from 'react';
 
 import Container from './components/container/Container';
 import Section from './components/section/Section';
@@ -14,13 +12,6 @@ const App = () => {
   // const [contacts, setContacts] = useState(() => {
   //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
   // });
-  const [filter, setFilter] = useState('');
-  const contacts = useSelector(state => state.phonebook.contacts);
-  const dispatch = useDispatch();
-
-  const filterChange = event => {
-    setFilter(event.currentTarget.value);
-  };
 
   // const isInContacts = ({ name, number }) => {
   //   const normalizedName = name.toLowerCase().replace(/\s+/g, '');
@@ -38,11 +29,6 @@ const App = () => {
   //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
 
-  // const normalizedFilter = filter.toLowerCase();
-  // const filteredContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter),
-  // );
-
   return (
     <Header title="Phonebook">
       <Container>
@@ -51,7 +37,7 @@ const App = () => {
         </Section>
 
         <Section title={'Contacts'}>
-          <ContactFilter value={filter} onChange={filterChange} />
+          <ContactFilter />
           <ContactList
           // contacts={filteredContacts}
           />
