@@ -28,14 +28,17 @@ const rootReducer = combineReducers({
   contacts: persistReducer(phonebookPersistConfig, phonebookReduser),
 });
 
-const middleware = [
+let middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
 ];
+
+if (process.env.NODE_ENV !== 'development') {
+  middleware = [...middleware, logger];
+}
 
 const store = configureStore({
   reducer: rootReducer,
