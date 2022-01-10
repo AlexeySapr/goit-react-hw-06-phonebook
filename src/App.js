@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-
 import Container from './components/container/Container';
 import Section from './components/section/Section';
 import ContactForm from './components/contactForm/ContactForm';
@@ -9,15 +7,6 @@ import ContactFilter from './components/contactFilter/ContactFilter';
 import Header from './components/header/Header';
 
 const App = () => {
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  // });
-
-  // useEffect(() => {
-  //   console.log('contacts: ', contacts);
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
-
   return (
     <Header title="Phonebook">
       <Container>
@@ -27,9 +16,7 @@ const App = () => {
 
         <Section title={'Contacts'}>
           <ContactFilter />
-          <ContactList
-          // contacts={filteredContacts}
-          />
+          <ContactList />
         </Section>
       </Container>
     </Header>
