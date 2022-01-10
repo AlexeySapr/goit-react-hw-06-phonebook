@@ -19,13 +19,13 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import phonebookReduser from './phonebook/phonebook-reducer';
 
 const phonebookPersistConfig = {
-  key: 'contacts',
+  key: 'items',
   storage,
   blacklist: ['filter'],
 };
 
 const rootReducer = combineReducers({
-  phonebook: persistReducer(phonebookPersistConfig, phonebookReduser),
+  contacts: persistReducer(phonebookPersistConfig, phonebookReduser),
 });
 
 const middleware = [
