@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from '../../redux/phonebook/phonebook-actions';
+import { getContacts } from '../../redux/phonebook/phonebook-selectors';
 import {
   FormContacts,
   InputLabel,
@@ -11,6 +12,7 @@ import {
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleNameChange = event => {
@@ -35,8 +37,25 @@ const ContactForm = () => {
     setNumber('');
   };
 
+  const isInContacts = ({ name, number }) => {
+    const normalizedName = name.toLowerCase().replace(/\s+/g, '');
+    const normalizedNumber = number.replace(/\D/g, '');
+    return contacts.some(contact => {
+      return (
+        contact.name.toLowerCase().replace(/\s+/g, '') === normalizedName ||
+        contact.number.replace(/\D/g, '') === normalizedNumber
+      );
+    });
+  };
+
   const onSubmit = event => {
     event.preventDefault();
+
+    if (isInContacts({ name, number })) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
     dispatch(addContact({ name, number }));
     ressetForm();
   };

@@ -13,17 +13,6 @@ const App = () => {
   //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
   // });
 
-  // const isInContacts = ({ name, number }) => {
-  //   const normalizedName = name.toLowerCase().replace(/\s+/g, '');
-  //   const normalizedNumber = number.replace(/\D/g, '');
-  //   return contacts.some(contact => {
-  //     return (
-  //       contact.name.toLowerCase().replace(/\s+/g, '') === normalizedName ||
-  //       contact.number.replace(/\D/g, '') === normalizedNumber
-  //     );
-  //   });
-  // };
-
   // useEffect(() => {
   //   console.log('contacts: ', contacts);
   //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
