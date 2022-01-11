@@ -1,11 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getFilter } from '../../redux/phonebook/phonebook-selectors';
-
-import { changeFilter } from '../../redux/phonebook/phonebook-actions';
+import { selectors, actions } from 'redux/phonebook';
 import { InputLabel, FormInput } from './ContactFilter.styled';
 
 const ContactFilter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectors.getFilter);
   const dispatch = useDispatch();
 
   return (
@@ -15,7 +13,9 @@ const ContactFilter = () => {
         type="text"
         name="filter"
         value={filter}
-        onChange={event => dispatch(changeFilter(event.currentTarget.value))}
+        onChange={event =>
+          dispatch(actions.changeFilter(event.currentTarget.value))
+        }
       ></FormInput>
     </InputLabel>
   );

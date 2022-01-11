@@ -1,15 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { delContact } from '../../redux/phonebook/phonebook-actions';
-import {
-  getContacts,
-  getFilter,
-} from '../../redux/phonebook/phonebook-selectors';
+import { selectors, actions } from 'redux/phonebook';
 
 import { List, ListItem, Text, ItemBtn } from './ContactList.styled';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectors.getContacts);
+  const filter = useSelector(selectors.getFilter);
   const dispatch = useDispatch();
 
   const normalizedFilter = filter.toLowerCase();
@@ -26,7 +22,7 @@ const ContactList = () => {
           </Text>
           <ItemBtn
             type="button"
-            onClick={() => dispatch(delContact(contact.id))}
+            onClick={() => dispatch(actions.delContact(contact.id))}
           >
             Delete
           </ItemBtn>

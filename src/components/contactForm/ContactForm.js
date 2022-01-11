@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from '../../redux/phonebook/phonebook-actions';
-import { getContacts } from '../../redux/phonebook/phonebook-selectors';
+import { selectors, actions } from 'redux/phonebook';
 import {
   FormContacts,
   InputLabel,
@@ -12,7 +11,7 @@ import {
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectors.getContacts);
   const dispatch = useDispatch();
 
   const handleNameChange = event => {
@@ -56,7 +55,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(actions.addContact({ name, number }));
     ressetForm();
   };
 
